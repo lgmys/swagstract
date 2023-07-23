@@ -2,8 +2,7 @@
 
 ## Description
 
-This is a simple cli app that will extract selected operations from a swagger file and output them to stdout,
-ready to be piped into brand new, filtered swagger spec.
+This is a simple cli app that will extract selected operations (and related components) from a swagger file and output them to stdout.
 
 ### Usage
 
