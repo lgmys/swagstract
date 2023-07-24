@@ -25,11 +25,11 @@ fn main() -> Result<()> {
 
     let spec_path = Path::new(args.file.as_str());
     let spec_file: String = fs::read_to_string(spec_path)?;
-    let spec: Spec = serde_yaml::from_str(spec_file.as_str())?;
+    let original_spec: Spec = serde_yaml::from_str(spec_file.as_str())?;
 
-    let component_tree = components::ComponentTree::from_spec(&spec);
+    let component_tree = components::ComponentTree::from_spec(&original_spec);
 
-    let operations = operations::get_operations(&spec)?;
+    let operations = operations::get_operations(&original_spec)?;
 
     let operations_filtered: Vec<operations::Operation> =
         filter_operations_by_ids(&operations, &args.operations.as_slice().to_vec());
@@ -40,6 +40,9 @@ fn main() -> Result<()> {
     let spec = spec::SpecBuilder::default()
         .set_components(components_matching_operations)
         .set_operations(operations_filtered)
+        .set_info(original_spec.info.clone())
+        .set_servers(original_spec.servers.clone())
+        .set_openapi(original_spec.openapi)
         .build();
 
     let spec_as_string = serde_yaml::to_string(&spec)?;

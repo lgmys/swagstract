@@ -2,6 +2,8 @@
 name = "swagstract"
 version = "0.1.0"
 edition = "2021"
+repository = "https://github.com/lgmys/swagstract"
+authors = ["lgmys <lgmys@pm.me>"]
 
 [dependencies]
 anyhow = "1.0.72"
