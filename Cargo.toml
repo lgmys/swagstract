@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/lgmys/swagstract"
 authors = ["lgmys <lgmys@pm.me>"]
+license = "MIT"
+description = "A tool to extract a subset of OpenAPI 3.* spec from yaml files"
 
 [dependencies]
 anyhow = "1.0.72"
